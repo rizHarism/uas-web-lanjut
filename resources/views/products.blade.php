@@ -21,7 +21,7 @@
             <!-- Tabel Produk -->
             <div class="overflow-x-auto">
                 <table class="w-full table-auto border border-gray-200 rounded-lg text-sm text-left">
-                    <thead class="bg-gray-100 font-semibold text-gray-700 ">
+                    <thead class="bg-gray-200 font-semibold text-gray-700 ">
                         <tr>
                             <th class="p-3 border text-center">#</th>
                             <th class="p-3 border text-center">Kode</th>
@@ -40,13 +40,13 @@
             <!-- Tombol Aksi -->
             <div class="flex flex-wrap gap-4 justify-center mt-6">
                 <button id="load-btn"
-                    class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">Load</button>
+                    class="bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-900 cursor-pointer">Load</button>
                 <button id="insert-btn"
-                    class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">Insert</button>
+                    class="bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-900 cursor-pointer">Insert</button>
                 <button id="update-btn"
-                    class="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600">Update</button>
+                    class="bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-900 cursor-pointer">Update</button>
                 <button id="delete-btn"
-                    class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700">Delete</button>
+                    class="bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-900 cursor-pointer">Delete</button>
             </div>
 
         </div>
@@ -89,7 +89,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $('#load-btn').on('click', function() {
-            $.get('/fetch-product', function(data) {
+            $.get(`/product/fetch`, function(data) {
 
                 let rows = '';
                 let count = 1
@@ -141,7 +141,7 @@
             const selected = $('input[name="product"]:checked');
             if (!selected.length) return alert('Pilih produk terlebih dahulu.');
             const kode = selected.attr('id');
-            $.get(`/get-product/${kode}`, function(data) {
+            $.get(`/product/${kode}/show`, function(data) {
                 $('#nama').val(data.nama);
                 $('#harga').val(data.harga);
                 $('#stock').val(data.stock);
@@ -170,7 +170,7 @@
             };
 
             if (mode === 'insert') {
-                $.post('/add-product', data, function(response) {
+                $.post(`/product/store`, data, function(response) {
                     alert('Produk berhasil ditambahkan!');
                     $('#product-modal').addClass('hidden');
                     $('#load-btn').click(); // reload tabel
@@ -184,7 +184,7 @@
                 data._method = 'PUT';
                 data._kode = kode;
 
-                $.post('/update-product/' + kode, data, function(response) {
+                $.post(`/product/${kode}/update`, data, function(response) {
                     alert('Produk berhasil dirubah!');
                     $('#product-modal').addClass('hidden');
                     $('#load-btn').click(); // reload tabel
@@ -202,22 +202,22 @@
                 alert('Silakan pilih produk yang ingin dihapus.');
                 return;
             }
-
             const kode = selected.attr('id');
 
-            if (!confirm('Yakin ingin menghapus produk ini?')) return;
+            if (confirm('Yakin ingin menghapus produk ini?')) {
+                $.post(`/product/${kode}/delete`, {
+                _method: 'DELETE',
+                _token: '{{ csrf_token() }}'
+                    })
+                    .done(function() {
+                        alert('Produk berhasil dihapus!');
+                        $('#load-btn').click(); // reload data tabel
+                    })
+                    .fail(function() {
+                        alert('Gagal menghapus produk.');
+                    });
+            };
 
-            $.post("/destroy-product/" + kode, {
-                    _method: 'DELETE',
-                    _token: '{{ csrf_token() }}'
-                })
-                .done(function() {
-                    alert('Produk berhasil dihapus!');
-                    $('#load-btn').click(); // reload data tabel
-                })
-                .fail(function() {
-                    alert('Gagal menghapus produk.');
-                });
         });
     </script>
 

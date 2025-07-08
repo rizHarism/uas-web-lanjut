@@ -19,7 +19,7 @@ class ProductController extends Controller
         return response()->json($product);
     }
 
-    public function addProduct(Request $request)
+    public function store(Request $request)
     {
         Product::create([
             "nama" => $request->nama,
@@ -28,14 +28,14 @@ class ProductController extends Controller
         ]);
     }
 
-    public function getProduct($id)
+    public function show($id)
     {
 
         $product = Product::find($id);
         return response()->json($product);
     }
 
-    public function updateProduct(Request $request, $id)
+    public function update(Request $request, $id)
     {
 
         $product = Product::find($id);
@@ -46,7 +46,7 @@ class ProductController extends Controller
         $product->save();
     }
 
-    public function destroyProduct($id)
+    public function destroy($id)
     {
 
         $product = Product::find($id);

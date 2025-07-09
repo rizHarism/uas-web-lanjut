@@ -55,7 +55,7 @@
     <!-- Modal Insert -->
     <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">
-            <h3 class="text-xl font-bold mb-4">Tambah Produk</h3>
+            <h3 class="text-xl font-bold mb-4" id="modal-title">Tambah Produk</h3>
 
             <form id="product-form">
                 <div class="mb-3">

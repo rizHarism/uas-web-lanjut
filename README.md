@@ -24,7 +24,7 @@ Aplikasi ini dibuat untuk memenuhi tugas **Ujian Akhir Semester** mata kuliah **
 
 ---
 
-## Tugas ini dibuat oleh :
+## 📝 Tugas ini dikerjakan oleh :
 
 -   **Rizqi Harisma U.** : **23104410001**
 -   **Nugraha Yoga H.** : **20104410049**

@@ -9,7 +9,7 @@ Aplikasi ini dibuat untuk memenuhi tugas **Ujian Akhir Semester** mata kuliah **
 ## ✅ Features
 
 -   [x] AJAX **CRUD** (Create, Read, Update, Delete)
--   [x] Styling halaman dengan **Tailwind cards dan tables**
+-   [x] Styling halaman dengan **Tailwind Css**
 -   [x] **Radio button** berfungsi memilih item untuk update/delete
 -   [x] **Modal form** untuk insert & update data
 

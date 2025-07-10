@@ -1,6 +1,8 @@
 # 🛒 Laravel Product Management App
 
-Aplikasi **Product Management** dengan **AJAX CRUD**. Menggunakan **TailwindCSS** untuk styling dan **jQuery** untuk interaktif halaman.
+Program **Product Management** dengan **AJAX CRUD**. Menggunakan **TailwindCSS** untuk styling dan **jQuery** untuk interaktif halaman.
+
+Aplikasi ini dibuat untuk memenuhi tugas **Ujian Akhir Semester** mata kuliah **Pemrograman Web Lanjut**.
 
 ---
 
@@ -15,7 +17,14 @@ Aplikasi **Product Management** dengan **AJAX CRUD**. Menggunakan **TailwindCSS*
 
 ## 🖥️ Tech Stack
 
--   **Laravel 12+**
--   **Tailwind CSS 3**
+-   **Laravel 12**
+-   **Tailwind CSS**
 -   **jQuery + AJAX**
--   **SQLite** (configurable)
+-   **SQLite**
+
+---
+
+T## Tugas ini dibuat oleh :
+
+-   **Rizqi Harisma U.** : **23104410001**
+-   **Nugraha Yoga H.** : **20104410049**
